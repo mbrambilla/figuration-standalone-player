@@ -11,3 +11,6 @@ Files to be used can be found in the `dist` folder. The CSS and JS are available
 - `figuration-player.min.js`
 - `fontello.ttf`
 - `fontello.woff2`
+
+A basic example is available for preview:
+[Demo page](https://mbrambilla.github.io/figuration-standalone-player/demo/)

@@ -1,0 +1,88 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border) {
+    $extender: str-replace($parent, ".", "");
+
+    %btn-variant-#{$extender}-base {
+        color: $color;
+        background-color: $bg;
+        border-color: $border;
+    }
+    #{$parent} {
+        @extend %btn-variant-#{$extender}-base;
+    }
+
+    #{$parent}:hover {
+        color: $hover-color;
+        background-color: $hover-bg;
+        border-color: $hover-border;
+    }
+
+    // Focus state
+    %btn-variant-#{$extender}-focus {
+        // No mixin use, so feedback is always present
+        @if $enable-shadows {
+            @include box-shadow($btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+        } @else {
+            box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+        }
+    }
+    #{$parent}:focus {
+        @extend %btn-variant-#{$extender}-focus;
+    }
+
+    // Disabled state
+    %btn-variant-#{$extender}-disable {
+        color: $disabled-color;
+        background-color: $disabled-bg;
+        border-color: $disabled-border;
+    }
+    #{$parent}.disabled,
+    #{$parent}:disabled {
+        @extend %btn-variant-#{$extender}-disable;
+    }
+
+    // Active state
+    %btn-variant-#{$extender}-active {
+        color: $active-color;
+        background-color: $active-bg;
+        border-color: $active-border;
+    }
+    #{$parent}:active,
+    #{$parent}.active,
+    #{$parent}.open[data-cfw="dropdown"] {
+        @extend %btn-variant-#{$extender}-active;
+    }
+
+    // Active focus state
+    @if $enable-shadows {
+        %btn-variant-#{$extender}-active-focus {
+            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+        }
+        #{$parent}:active:focus,
+        #{$parent}.active:focus,
+        #{$parent}.open[data-cfw="dropdown"]:focus {
+            @extend %btn-variant-#{$extender}-active-focus;
+        }
+    }
+}
+
+// Button sizes
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+    @if $padding-y == null and $padding-x == null {
+        // No padding output
+    } @else if $padding-y == null or $padding-x == null {
+        $padding-y: if($padding-y != null, $padding-y, $btn-padding-y);
+        $padding-x: if($padding-x != null, $padding-x, $btn-padding-x);
+        padding: $padding-y $padding-x;
+    } @else {
+        padding: $padding-y $padding-x;
+    }
+    font-size: $font-size;
+    line-height: $line-height;
+    // Provide a fallback to override to the browser default
+    border-radius: $border-radius;
+}

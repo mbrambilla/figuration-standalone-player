@@ -1,0 +1,28 @@
+// Form Range
+@mixin form-range-track() {
+    box-sizing: border-box;
+    width: 100%;
+    height: $form-range-track-height;
+    margin: 0 $form-range-thumb-focus-box-shadow-width;
+    color: transparent;
+    cursor: $form-range-track-cursor;
+    border: $form-range-track-border;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
+}
+
+@mixin form-range-thumb() {
+    box-sizing: border-box;
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    appearance: none;
+    background-color: $form-range-thumb-bg;
+    border: $form-range-thumb-border;
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
+    @include transition($input-transition);
+
+    &:active {
+        background-color: $form-range-thumb-active-bg;
+    }
+}

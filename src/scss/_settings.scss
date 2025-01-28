@@ -1,0 +1,162 @@
+$prefix: cf- !default;
+
+$enable-color-warnings:         false !default;     // false
+$enable-rounded:                true !default;      // true
+$enable-shadows:                false !default;     // false
+$enable-transitions:            true !default;      // true
+$enable-transitions-reduced:    true !default;      // true
+
+// Palette
+// =====
+// List of levels to build CSS out for each of the palette themes
+// Valid levels 0-1000
+$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
+
+// Percentage value per level to mix against white or black
+// Darker levels (>500) get narrower step interval than lighter
+// Values must be <= .2%
+$palette-interval-light:    .2% !default;
+$palette-interval-dark:     .15% !default;
+
+// Grid
+// =====
+// Set the number of columns and specify the width of the gutter.
+$grid-columns:      12 !default;
+$grid-gutter-width: 2rem !default;
+$grid-row-columns:  6 !default;
+
+// Fonts
+// =====
+// `$font-size-root` affects the value of `rem`, which is used for as well font sizes, paddings and margins
+// `$font-size-base` affects the font size of the body text
+$font-size-root:    null !default;
+$font-size-base:    1rem !default;
+$line-height-base:  1.5 !default;
+
+$font-weight-normal:    400 !default;
+
+// Colors
+// =====
+// Base Colors
+$uibase:    #5e7182 !default;
+$white:     #fff !default;
+$black:     #000 !default;
+$primary:   #0055e9 !default;
+$light:     palette($uibase, 50) !default;
+$dark:      palette($uibase, 800) !default;
+
+// Base UI Scale
+$uibase-50:   palette($uibase, 50) !default;
+$uibase-100:  palette($uibase, 100) !default;
+$uibase-200:  palette($uibase, 200) !default;
+$uibase-300:  palette($uibase, 300) !default;
+$uibase-400:  palette($uibase, 400) !default;
+$uibase-500:  palette($uibase, 500) !default;
+$uibase-600:  palette($uibase, 600) !default;
+$uibase-700:  palette($uibase, 700) !default;
+$uibase-800:  palette($uibase, 800) !default;
+$uibase-900:  palette($uibase, 900) !default;
+
+// Color Contrast
+// =====
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+$color-contrast-min-ratio:  4.5 !default;
+$color-contrast-base-light: $white !default;
+$color-contrast-base-dark:  $uibase-900 !default;
+
+// Component transitions
+// =====
+$btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+// Borders
+// =====
+// Border dimension in pixels to get proper visual layout
+$border-width:      1px !default;
+$border-color:      $uibase-200 !default;
+$border-radius:     .375rem !default;
+
+// Shadows
+// =====
+// Control the `box-shadow` depth.
+$shadows: (
+    "0":  none,
+    "d1": 0 .125rem .1875rem rgba($black, .15),
+    "d2": 0 .125rem .25rem rgba($black, .15),
+    "d3": 0 .125rem .5rem rgba($black, .15),
+    "d4": 0 .125rem .75rem rgba($black, .15),
+    "d5": 0 .125rem 1rem rgba($black, .15),
+    "i1": inset 0 .125rem .1875rem rgba($black, .15),
+    "i2": inset 0 .125rem .25rem rgba($black, .15),
+    "i3": inset 0 .125rem .5rem rgba($black, .15),
+    "i4": inset 0 .125rem .75rem rgba($black, .15),
+    "i5": inset 0 .125rem 1rem rgba($black, .15)
+) !default;
+
+
+// Buttons
+// =====
+$btn-padding-y:             .25em !default;
+$btn-padding-x:             .75em !default;
+$btn-font-family:           null !default;
+$btn-font-size:             $font-size-base !default;
+$btn-font-weight:           $font-weight-normal !default;
+$btn-line-height:           1.5 !default;
+$btn-white-space:           null !default;
+$btn-border-width:          $border-width !default;
+$btn-border-radius:         $border-radius !default;
+$btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 .125em .125em rgba($black, .075) !default;
+$btn-active-box-shadow:     inset 0 .25em .3125em rgba($black, .125) !default;
+
+$btn-focus-box-shadow-size:  0 0 0 .1875rem !default;
+$btn-focus-box-shadow-alpha: .35 !default;
+$btn-focus-box-shadow:       $btn-focus-box-shadow-size rgba($primary, $btn-focus-box-shadow-alpha) !default;
+
+$btn-outline-bg:            transparent !default;
+
+$btn-disabled-opacity:      .6 !default;
+
+$btn-icon-multiplier:       .5 !default;
+
+$btn-default-bg:                    $white !default;
+$btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;
+$btn-default-border-color:          $uibase-300 !default;
+$btn-default-focus-box-shadow-color: $primary !default;
+$btn-default-hover-bg:              $uibase-50 !default;
+$btn-default-hover-color:           color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
+$btn-default-hover-border-color:    $uibase-400 !default;
+$btn-default-active-bg:             $uibase-200 !default;
+$btn-default-active-color:          color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
+$btn-default-active-border-color:   $uibase-400 !default;
+$btn-default-disabled-bg:           $btn-default-bg !default;
+$btn-default-disabled-color:        $btn-default-color !default;
+$btn-default-disabled-border-color: $btn-default-border-color !default;
+
+// Input
+// =====
+$input-focus-box-shadow-size:   0 0 0 .1875rem !default;
+$input-focus-box-shadow-alpha:  .35 !default;
+$input-focus-box-shadow:        $input-focus-box-shadow-size rgba($primary, $input-focus-box-shadow-alpha) !default;
+
+// Form range input
+// =====
+$form-range-track-height:           .5em !default;
+$form-range-track-cursor:           pointer !default;
+$form-range-track-bg:               $uibase-100 !default;
+$form-range-track-border:           0 !default;
+$form-range-track-border-radius:    $form-range-track-height !default;
+$form-range-track-box-shadow:       map-get($shadows, "i1") !default;
+
+$form-range-thumb-width:                  1.125em !default;
+$form-range-thumb-height:                 $form-range-thumb-width !default;
+$form-range-thumb-bg:                     $primary !default;
+$form-range-thumb-border:                 0 !default;
+$form-range-thumb-border-radius:          50% !default;
+$form-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
+$form-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
+$form-range-thumb-focus-box-shadow-width: .1875rem !default;
+$form-range-thumb-active-bg:              palette($primary, 600) !default;
+$form-range-thumb-disabled-bg:            $uibase-300 !default;
+
+$form-range-height:                 add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
+$form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari

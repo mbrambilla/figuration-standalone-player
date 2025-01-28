@@ -1,0 +1,36 @@
+{
+  "name": "figuration-standalone-player",
+  "version": "0.0.1",
+  "description": "Standalone CAST Figuration Player",
+  "private": true,
+  "main": "dist/figuration-player.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm-run-all clean css js font",
+    "clean": "rimraf dist",
+    "css": "npm-run-all css-compile css-prefix css-minify",
+    "css-compile": "sass --style expanded --no-source-map --no-error-css src/scss/:dist/",
+    "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --output dist/ --batch --batch-suffix \".min\" \"dist/*.css\" \"!dist/*.min.css\"",
+    "css-prefix": "postcss --config build/postcss.config.mjs --replace dist/*.css",
+    "font": "shx cp font/fontello/font/*.woff2 dist/. && shx cp font/fontello/font/*.ttf dist/.",
+    "js": "npm-run-all js-concat js-minify",
+    "js-concat": "mkdirp dist/ && concat -o dist/figuration-player.js src/js/util.js src/js/player.js",
+    "js-minify": "terser --compress passes=2 --mangle --output dist/figuration-player.min.js dist/figuration-player.js"
+  },
+  "author": "CAST, Inc.",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "clean-css-cli": "^5.6.3",
+    "concat": "^1.0.3",
+    "mkdirp": "^3.0.1",
+    "npm-run-all2": "^7.0.2",
+    "postcss": "^8.4.49",
+    "postcss-calc": "^10.1.0",
+    "postcss-cli": "^11.0.0",
+    "rimraf": "^6.0.1",
+    "sass": "1.77.6",
+    "shx": "^0.3.4",
+    "terser": "^5.37.0"
+  }
+}

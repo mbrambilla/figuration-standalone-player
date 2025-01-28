@@ -1,0 +1,75 @@
+$player-btn-icon-vertical-align: baseline !default;
+
+$player-transcript-max-height: 18rem !default;
+$player-transcript-padding-y: .75rem !default;
+$player-transcript-padding-x: 1rem !default;
+$player-transcript-margin-bottom: 1rem !default;
+$player-transcript-bg: $light !default;
+$player-transcript-color: $dark !default;
+$player-transcript-border-width: 1px !default;
+$player-transcript-border-color: $border-color !default;
+$player-transcript-border-radius: $border-radius !default;
+$player-transcript-active-bg: #ff6 !default;
+$player-transcript-seekpoint-hover-bg: #cf6 !default;
+
+.cf-player-wrapper {
+    margin-bottom: 1rem;
+    white-space: nowrap;
+
+    .player-control > .off {
+        display: none;
+    }
+
+    .player-time {
+        @include make-row(0);
+        display: inline-flex;
+
+        & > * {
+            @include make-col-ready(.5rem);
+        }
+    }
+
+    .player-time-current,
+    .player-time-duration {
+        @include make-col-auto();
+    }
+
+    .player-seek {
+        @include make-col();
+    }
+
+    .player-script-wrapper {
+        position: relative;
+
+        .form-check-label {
+            margin-bottom: 0;
+        }
+    }
+
+    & ~ .player-transcript {
+        position: relative;
+        max-height: $player-transcript-max-height;
+        padding: $player-transcript-padding-y $player-transcript-padding-x;
+        margin-bottom: $player-transcript-margin-bottom;
+        overflow: auto;
+        color: $player-transcript-color;
+        word-wrap: break-word;
+        background-color: $player-transcript-bg;
+        border: $player-transcript-border-width solid $player-transcript-border-color;
+        @include border-radius($player-transcript-border-radius);
+
+
+        .player-transcript-active {
+            background-color: $player-transcript-active-bg;
+        }
+
+        .player-transcript-seekpoint:hover {
+            cursor: pointer;
+            background: $player-transcript-seekpoint-hover-bg;
+        }
+
+        .player-transcript-caption {
+            display: block;
+        }
+    }
+}

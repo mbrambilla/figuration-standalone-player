@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Audio Player Demo</title>
+
+    <link rel="stylesheet" href="../dist/figuration-player.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="../dist/figuration-player.js"></script>
+</head>
+
+<body>
+    <div data-cfw="player" data-cfw-player-transcript-option="false">
+        <div class="cf-player-wrapper">
+            <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
+                <span class="player-control" data-cfw-player="control">
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play"><span class="fontello-fw fontello-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause"><span class="fontello-fw fontello-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop"><span class="fontello-fw fontello-stop" aria-hidden="true"></span></button>
+                </span>
+                <span class="player-time" data-cfw-player="time">
+                    <span class="player-time-current" data-cfw-player="time-current" aria-label="current time"></span>
+                    <span class="player-seek" data-cfw-player="seek">
+                        <input type="range" class="form-range" aria-label="Seek">
+                    </span>
+                    <span class="player-time-duration" data-cfw-player="time-duration" aria-label="total time"></span>
+                </span>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Toggle transcript"><span class="fontello-fw fontello-text" aria-hidden="true"></span></button>
+            </div>
+        </div>
+
+        <audio controls>
+            <source src="assets/arth_ire8.mp3" type="audio/mpeg" />
+            <track src="assets/arth_ire8.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+            <p>HTML5 audio not supported</p>
+        </audio>
+    </div>
+</body>
+
+</html>
